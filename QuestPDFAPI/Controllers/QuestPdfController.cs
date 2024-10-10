@@ -11,4 +11,12 @@ public class QuestPdfController : ControllerBase
         var pdfReportInfo = await QuestPdfService.GenerateSample1Pdf();
         return File(pdfReportInfo.ByteArray, pdfReportInfo.MimeType, pdfReportInfo.FileName);
     }
+
+    [HttpGet]
+    [Route("generate-pharmacy-report")]
+    public ActionResult GeneratePharmacyReport()
+    {
+        var byteArray = QuestPdfService.GeneratePharmacyReportBytes();
+        return File(byteArray, "application/pdf", "PharmacyReport.pdf");
+    }
 }
